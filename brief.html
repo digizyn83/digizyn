@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brief projet — Digizyn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root { --black:#0a0a0a; --white:#f5f4f0; --gray:#888; --light:#ececea; --font-display:'Syne',sans-serif; --font-body:'DM Sans',sans-serif; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-body);background:var(--white);color:var(--black);font-size:16px;line-height:1.6}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;border-bottom:1px solid rgba(10,10,10,0.08)}
+.logo{font-family:var(--font-display);font-size:18px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.logo span{color:var(--gray);font-weight:400}
+.back-link{font-size:13px;color:var(--gray);text-decoration:none}
+.back-link:hover{color:var(--black)}
+.wrap{max-width:680px;margin:0 auto;padding:3rem 2rem 5rem}
+.bf-header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(10,10,10,0.08)}
+.bf-header h1{font-family:var(--font-display);font-size:32px;font-weight:600;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.bf-header p{font-size:14px;color:var(--gray);line-height:1.7}
+.progress-bar{display:flex;gap:4px;margin-top:1.8rem}
+.prog-seg{height:2px;flex:1;background:rgba(10,10,10,0.1);border-radius:1px;transition:background 0.3s}
+.prog-seg.done{background:var(--black)}
+.prog-label{font-size:12px;color:var(--gray);margin-top:8px}
+.step{display:none}
+.step.active{display:block}
+.step-title{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(10,10,10,0.08)}
+.field{margin-bottom:1.6rem}
+.field label{display:block;font-size:14px;font-weight:500;color:var(--black);margin-bottom:5px}
+.hint{font-size:12px;color:var(--gray);margin-bottom:7px;line-height:1.5}
+input,select,textarea{width:100%;font-size:14px;font-family:var(--font-body);border:1px solid rgba(10,10,10,0.15);border-radius:2px;padding:10px 13px;background:var(--white);color:var(--black);outline:none;transition:border-color 0.2s;-webkit-appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--black)}
+textarea{resize:vertical;min-height:90px;line-height:1.6}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.radio-card{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid rgba(10,10,10,0.12);border-radius:2px;cursor:pointer;margin-bottom:8px;transition:border-color 0.2s}
+.radio-card:hover{border-color:rgba(10,10,10,0.3)}
+.radio-card input{margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--black)}
+.radio-card-body strong{display:block;font-size:14px;font-weight:500;margin-bottom:2px}
+.radio-card-body span{font-size:12px;color:var(--gray)}
+.chk-card{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border:1px solid rgba(10,10,10,0.12);border-radius:2px;cursor:pointer;margin-bottom:6px;transition:border-color 0.2s}
+.chk-card:hover{border-color:rgba(10,10,10,0.3)}
+.chk-card input{margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--black)}
+.chk-card-body strong{display:block;font-size:13px;font-weight:500;margin-bottom:1px}
+.chk-card-body span{font-size:12px;color:var(--gray)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.tag{font-size:13px;padding:7px 16px;border:1px solid rgba(10,10,10,0.15);border-radius:2px;cursor:pointer;color:var(--gray);background:transparent;transition:all 0.15s;font-family:var(--font-body)}
+.tag:hover{border-color:rgba(10,10,10,0.3);color:var(--black)}
+.tag.on{background:var(--black);color:var(--white);border-color:var(--black)}
+.scale{display:flex;gap:8px;margin-top:6px}
+.sc-btn{width:44px;height:44px;border:1px solid rgba(10,10,10,0.15);border-radius:2px;font-size:14px;cursor:pointer;background:transparent;color:var(--gray);font-family:var(--font-body);transition:all 0.15s}
+.sc-btn:hover{border-color:var(--black);color:var(--black)}
+.sc-btn.on{background:var(--black);color:var(--white);border-color:var(--black)}
+.sc-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-top:5px}
+.nav-btns{display:flex;gap:10px;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(10,10,10,0.08)}
+.btn-next{flex:1;padding:13px;background:var(--black);color:var(--white);border:1px solid var(--black);border-radius:2px;font-size:14px;font-weight:500;font-family:var(--font-body);cursor:pointer;transition:opacity 0.2s}
+.btn-next:hover{opacity:0.8}
+.btn-prev{padding:13px 20px;background:transparent;color:var(--gray);border:1px solid rgba(10,10,10,0.15);border-radius:2px;font-size:14px;font-family:var(--font-body);cursor:pointer}
+.btn-prev:hover{color:var(--black);border-color:var(--black)}
+.req{color:#c0392b}
+.info-note{background:rgba(10,10,10,0.04);border-left:2px solid rgba(10,10,10,0.2);padding:12px 14px;font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:1.4rem}
+.recap-card{border:1px solid rgba(10,10,10,0.12);border-radius:2px;padding:1.2rem;margin-bottom:12px}
+.recap-card h3{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
+.recap-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid rgba(10,10,10,0.06)}
+.recap-row:last-child{border-bottom:none}
+.recap-row .k{color:var(--gray)}
+.recap-row .v{font-weight:500;max-width:55%;text-align:right}
+.submit-btn{width:100%;padding:14px;background:var(--black);color:var(--white);border:none;border-radius:2px;font-size:15px;font-weight:500;font-family:var(--font-body);cursor:pointer;margin-top:12px;transition:opacity 0.2s}
+.submit-btn:hover{opacity:0.8}
+.success{text-align:center;padding:4rem 1rem;display:none}
+.success-icon{width:52px;height:52px;border:1px solid rgba(10,10,10,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.success h2{font-family:var(--font-display);font-size:26px;font-weight:600;margin-bottom:1rem}
+.success p{font-size:15px;color:var(--gray);line-height:1.7}
+@media(max-width:600px){nav{padding:1rem 1.2rem}.wrap{padding:2rem 1.2rem 4rem}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">DIGI<span>ZYN</span></a>
+  <a href="index.html" class="back-link">← Retour au site</a>
+</nav>
+
+<div class="wrap">
+  <div class="bf-header">
+    <h1>Brief projet</h1>
+    <p>Répondez à ces questions pour que nous puissions créer votre site exactement comme vous l'imaginez — du premier coup. Environ 5 minutes.</p>
+    <div class="progress-bar">
+      <div class="prog-seg done" id="p1"></div>
+      <div class="prog-seg" id="p2"></div>
+      <div class="prog-seg" id="p3"></div>
+      <div class="prog-seg" id="p4"></div>
+      <div class="prog-seg" id="p5"></div>
+      <div class="prog-seg" id="p6"></div>
+      <div class="prog-seg" id="p7"></div>
+    </div>
+    <div class="prog-label" id="prog-label">Étape 1 sur 7 — Informations générales</div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step active" id="s1">
+    <div class="step-title">01 — Qui êtes-vous ?</div>
+    <div class="grid2">
+      <div class="field"><label>Prénom & nom <span class="req">*</span></label><input type="text" id="nom" placeholder="Marie Dupont"></div>
+      <div class="field"><label>Nom de l'entreprise</label><input type="text" id="entreprise" placeholder="Mon Entreprise"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label>Email <span class="req">*</span></label><input type="email" id="email" placeholder="marie@monentreprise.fr"></div>
+      <div class="field"><label>Téléphone</label><input type="tel" id="tel" placeholder="+33 6 00 00 00 00"></div>
+    </div>
+    <div class="field">
+      <label>Secteur d'activité <span class="req">*</span></label>
+      <select id="secteur">
+        <option value="">Sélectionner...</option>
+        <option>Commerce & Retail</option><option>Restauration & Alimentation</option>
+        <option>Santé & Bien-être</option><option>Artisan & BTP</option>
+        <option>Consulting & Services</option><option>Mode & Beauté</option>
+        <option>Éducation & Formation</option><option>Immobilier</option>
+        <option>Technologie & Informatique</option><option>Tourisme & Hôtellerie</option>
+        <option>Sport & Loisirs</option><option>Association & ONG</option>
+        <option>Professions libérales</option><option>Artiste & Créatif</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Décrivez votre activité <span class="req">*</span></label>
+      <div class="hint">Qui êtes-vous ? Que proposez-vous ? À qui ?</div>
+      <textarea id="activite" placeholder="Ex : Je suis coiffeuse indépendante à Lyon, spécialisée dans les colorations végétales. Je reçois une clientèle féminine qui recherche des soins naturels et sur-mesure."></textarea>
+    </div>
+    <div class="field">
+      <label>Ancienneté de votre activité</label>
+      <div class="tags" id="t-ancien">
+        <button class="tag" onclick="tog(this,'t-ancien')">Je démarre</button>
+        <button class="tag" onclick="tog(this,'t-ancien')">Moins d'1 an</button>
+        <button class="tag" onclick="tog(this,'t-ancien')">1 à 3 ans</button>
+        <button class="tag" onclick="tog(this,'t-ancien')">Plus de 3 ans</button>
+      </div>
+    </div>
+    <div class="nav-btns"><button class="btn-next" onclick="go(2)">Suivant →</button></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step" id="s2">
+    <div class="step-title">02 — Votre projet</div>
+    <div class="field">
+      <label>Type de site <span class="req">*</span></label>
+      <label class="radio-card"><input type="radio" name="type"><div class="radio-card-body"><strong>Site vitrine</strong><span>Présenter votre activité et obtenir des contacts</span></div></label>
+      <label class="radio-card"><input type="radio" name="type"><div class="radio-card-body"><strong>Boutique e-commerce</strong><span>Vendre en ligne avec paiement sécurisé</span></div></label>
+      <label class="radio-card"><input type="radio" name="type"><div class="radio-card-body"><strong>Portfolio / Book créatif</strong><span>Présenter vos réalisations à des clients</span></div></label>
+      <label class="radio-card"><input type="radio" name="type"><div class="radio-card-body"><strong>Site avec espace membre</strong><span>Contenu privé, abonnements, cours en ligne</span></div></label>
+      <label class="radio-card"><input type="radio" name="type"><div class="radio-card-body"><strong>Blog / Magazine</strong><span>Publier du contenu, développer une audience</span></div></label>
+      <label class="radio-card"><input type="radio" name="type"><div class="radio-card-body"><strong>Application web sur mesure</strong><span>Outil métier ou plateforme spécifique</span></div></label>
+    </div>
+    <div class="field">
+      <label>Situation actuelle</label>
+      <label class="radio-card"><input type="radio" name="exist"><div class="radio-card-body"><strong>Premier site</strong><span>Je n'ai pas encore de site internet</span></div></label>
+      <label class="radio-card"><input type="radio" name="exist"><div class="radio-card-body"><strong>Refonte complète</strong><span>J'ai un site, je veux le refaire entièrement</span></div></label>
+      <label class="radio-card"><input type="radio" name="exist"><div class="radio-card-body"><strong>Amélioration</strong><span>J'ai un site, je veux l'améliorer</span></div></label>
+    </div>
+    <div class="field"><label>URL de votre site actuel (si applicable)</label><input type="url" placeholder="https://www.monsite.fr"></div>
+    <div class="field">
+      <label>Objectif principal <span class="req">*</span></label>
+      <div class="hint">Qu'est-ce que vous voulez que vos visiteurs fassent en premier ?</div>
+      <div class="tags" id="t-obj">
+        <button class="tag" onclick="tog(this,'t-obj')">Prendre contact</button>
+        <button class="tag" onclick="tog(this,'t-obj')">Prendre RDV</button>
+        <button class="tag" onclick="tog(this,'t-obj')">Acheter en ligne</button>
+        <button class="tag" onclick="tog(this,'t-obj')">Me faire connaître</button>
+        <button class="tag" onclick="tog(this,'t-obj')">Générer des devis</button>
+        <button class="tag" onclick="tog(this,'t-obj')">Fidéliser</button>
+        <button class="tag" onclick="tog(this,'t-obj')">Recruter</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Nombre de pages souhaité</label>
+      <select>
+        <option value="">Sélectionner...</option>
+        <option>1 page (one-page)</option><option>2 à 4 pages</option>
+        <option>5 à 8 pages</option><option>Plus de 8 pages</option>
+        <option>Conseillez-moi</option>
+      </select>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-prev" onclick="go(1)">← Retour</button>
+      <button class="btn-next" onclick="go(3)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step" id="s3">
+    <div class="step-title">03 — Votre cible & concurrents</div>
+    <div class="field">
+      <label>Décrivez votre client idéal <span class="req">*</span></label>
+      <div class="hint">Âge, profession, localisation, ce qu'il recherche, ce qui le préoccupe...</div>
+      <textarea placeholder="Ex : Femmes de 30 à 50 ans, actives, soucieuses de leur bien-être, qui cherchent un service de qualité près de chez elles. Elles comparent sur Google avant de réserver."></textarea>
+    </div>
+    <div class="field">
+      <label>Zone géographique de vos clients</label>
+      <div class="tags" id="t-geo">
+        <button class="tag" onclick="tog(this,'t-geo')">Ma ville</button>
+        <button class="tag" onclick="tog(this,'t-geo')">Ma région</button>
+        <button class="tag" onclick="tog(this,'t-geo')">France entière</button>
+        <button class="tag" onclick="tog(this,'t-geo')">Europe</button>
+        <button class="tag" onclick="tog(this,'t-geo')">International</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Vos principaux concurrents</label>
+      <div class="hint">Nom + site web si possible. Cela nous aide à comprendre votre marché.</div>
+      <textarea placeholder="1. Concurrent A — www.concurrent-a.fr&#10;2. Concurrent B — www.concurrent-b.fr&#10;3. Concurrent C — pas de site connu"></textarea>
+    </div>
+    <div class="field">
+      <label>Ce qui vous différencie <span class="req">*</span></label>
+      <div class="hint">Votre avantage clé, ce que vous faites mieux ou différemment de la concurrence.</div>
+      <textarea placeholder="Ex : Je suis la seule à utiliser des colorations 100% végétales dans ma ville. Mes clients repartent avec un soin personnalisé et des conseils d'entretien."></textarea>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-prev" onclick="go(2)">← Retour</button>
+      <button class="btn-next" onclick="go(4)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step" id="s4">
+    <div class="step-title">04 — Contenu & ressources</div>
+    <div class="field">
+      <label>Ce que vous avez déjà <span class="req">*</span></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Un logo</strong><span>Format numérique (PNG, SVG, AI...)</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Une charte graphique</strong><span>Couleurs officielles, polices définies</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Des textes rédigés</strong><span>Contenu prêt pour les pages du site</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Des photos professionnelles</strong><span>De votre activité, produits ou équipe</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Des vidéos</strong><span>Présentation, témoignages, produits</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Un nom de domaine</strong><span>Ex : monsite.fr déjà enregistré</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Rien — besoin d'aide pour tout</strong><span>Nous pouvons vous accompagner sur chaque point</span></div></label>
+    </div>
+    <div class="field">
+      <label>Nom de domaine souhaité</label>
+      <input type="text" placeholder="Ex : monentreprise.fr">
+    </div>
+    <div class="field">
+      <label>Pour vos textes</label>
+      <label class="radio-card"><input type="radio" name="textes"><div class="radio-card-body"><strong>Je fournis mes textes moi-même</strong></div></label>
+      <label class="radio-card"><input type="radio" name="textes"><div class="radio-card-body"><strong>Je fournis les grandes lignes, vous rédigez</strong></div></label>
+      <label class="radio-card"><input type="radio" name="textes"><div class="radio-card-body"><strong>J'ai besoin que vous rédigiez tout</strong></div></label>
+    </div>
+    <div class="field">
+      <label>Pour vos photos</label>
+      <label class="radio-card"><input type="radio" name="photos"><div class="radio-card-body"><strong>J'ai mes propres photos professionnelles</strong></div></label>
+      <label class="radio-card"><input type="radio" name="photos"><div class="radio-card-body"><strong>J'utiliserai des photos de banques d'images</strong></div></label>
+      <label class="radio-card"><input type="radio" name="photos"><div class="radio-card-body"><strong>J'ai besoin d'un photographe (vous orienter ?)</strong></div></label>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-prev" onclick="go(3)">← Retour</button>
+      <button class="btn-next" onclick="go(5)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step" id="s5">
+    <div class="step-title">05 — Design & identité visuelle</div>
+    <div class="field">
+      <label>Style & ambiance souhaités <span class="req">*</span></label>
+      <div class="hint">Sélectionnez tout ce qui correspond à l'image que vous voulez donner.</div>
+      <div class="tags" id="t-style">
+        <button class="tag" onclick="tog(this,'t-style')">Moderne & épuré</button>
+        <button class="tag" onclick="tog(this,'t-style')">Élégant & haut de gamme</button>
+        <button class="tag" onclick="tog(this,'t-style')">Chaleureux & humain</button>
+        <button class="tag" onclick="tog(this,'t-style')">Sobre & professionnel</button>
+        <button class="tag" onclick="tog(this,'t-style')">Coloré & dynamique</button>
+        <button class="tag" onclick="tog(this,'t-style')">Minimaliste</button>
+        <button class="tag" onclick="tog(this,'t-style')">Original & créatif</button>
+        <button class="tag" onclick="tog(this,'t-style')">Luxe & premium</button>
+        <button class="tag" onclick="tog(this,'t-style')">Naturel & écologique</button>
+        <button class="tag" onclick="tog(this,'t-style')">Jeune & tendance</button>
+        <button class="tag" onclick="tog(this,'t-style')">Technologique</button>
+        <button class="tag" onclick="tog(this,'t-style')">Artisanal & authentique</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Vos couleurs de marque</label>
+      <div class="hint">Si vous en avez, précisez-les. Sinon, décrivez vos préférences.</div>
+      <input type="text" placeholder="Ex : Bleu marine #1A2B4C et doré — ou 'je préfère les tons chauds et naturels'">
+    </div>
+    <div class="field">
+      <label>Sites que vous aimez <span class="req">*</span></label>
+      <div class="hint">2 à 4 URLs de sites dont vous aimez le design. Expliquez brièvement pourquoi.</div>
+      <textarea placeholder="https://www.site1.fr — j'aime le côté épuré et les grandes photos&#10;https://www.site2.com — j'aime la mise en page et les animations douces"></textarea>
+    </div>
+    <div class="field">
+      <label>Sites que vous n'aimez pas</label>
+      <div class="hint">Cela nous aide à éviter certaines directions.</div>
+      <textarea placeholder="https://www.site3.fr — trop chargé, trop de texte&#10;https://www.site4.com — trop froid, pas assez humain"></textarea>
+    </div>
+    <div class="field">
+      <label>Niveau de modernité souhaité</label>
+      <div class="scale" id="sc-mod">
+        <button class="sc-btn" onclick="sc(this,'sc-mod')">1</button>
+        <button class="sc-btn" onclick="sc(this,'sc-mod')">2</button>
+        <button class="sc-btn on" onclick="sc(this,'sc-mod')">3</button>
+        <button class="sc-btn" onclick="sc(this,'sc-mod')">4</button>
+        <button class="sc-btn" onclick="sc(this,'sc-mod')">5</button>
+      </div>
+      <div class="sc-labels"><span>Classique & intemporel</span><span>Très moderne & audacieux</span></div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-prev" onclick="go(4)">← Retour</button>
+      <button class="btn-next" onclick="go(6)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step" id="s6">
+    <div class="step-title">06 — Fonctionnalités</div>
+    <div class="field">
+      <label>Fonctionnalités souhaitées <span class="req">*</span></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Formulaire de contact</strong><span>Les visiteurs vous envoient un message directement</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Prise de rendez-vous en ligne</strong><span>Calendrier intégré, réservation automatique</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Galerie photos / portfolio</strong><span>Afficher vos réalisations ou produits</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Boutique en ligne & paiement</strong><span>Vente de produits ou services avec CB, PayPal...</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Blog / actualités</strong><span>Publier des articles régulièrement</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Carte Google Maps</strong><span>Afficher votre adresse et zone d'intervention</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Avis clients / témoignages</strong><span>Afficher vos avis Google ou témoignages vidéo</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Chat en direct</strong><span>Discuter en temps réel avec vos visiteurs</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Newsletter</strong><span>Collecter les emails et envoyer des campagnes</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Devis en ligne</strong><span>Les visiteurs demandent un devis automatiquement</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Espace client / connexion</strong><span>Zone privée pour vos clients</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Site multilingue</strong><span>Plusieurs langues (français, anglais...)</span></div></label>
+      <label class="chk-card"><input type="checkbox"><div class="chk-card-body"><strong>Intégration réseaux sociaux</strong><span>Feed Instagram, partage, liens directs</span></div></label>
+    </div>
+    <div class="field">
+      <label>Outils existants à connecter</label>
+      <div class="hint">Logiciel de caisse, CRM, outil de facturation, plateforme de réservation...</div>
+      <textarea placeholder="Ex : j'utilise Doctolib pour mes RDV / j'utilise Shopify actuellement / j'ai un logiciel de caisse Lightspeed"></textarea>
+    </div>
+    <div class="field">
+      <label>Fonctionnalité spécifique non listée</label>
+      <textarea placeholder="Décrivez toute fonctionnalité particulière..."></textarea>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-prev" onclick="go(5)">← Retour</button>
+      <button class="btn-next" onclick="go(7)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="step" id="s7">
+    <div class="step-title">07 — Budget & délais</div>
+    <div class="field">
+      <div class="info-note">Être transparent sur votre budget nous permet de vous proposer la meilleure solution dans votre enveloppe.</div>
+      <label>Budget pour ce projet <span class="req">*</span></label>
+      <label class="radio-card"><input type="radio" name="budget"><div class="radio-card-body"><strong>Moins de 500 €</strong></div></label>
+      <label class="radio-card"><input type="radio" name="budget"><div class="radio-card-body"><strong>500 € à 1 000 €</strong></div></label>
+      <label class="radio-card"><input type="radio" name="budget"><div class="radio-card-body"><strong>1 000 € à 2 000 €</strong></div></label>
+      <label class="radio-card"><input type="radio" name="budget"><div class="radio-card-body"><strong>2 000 € à 5 000 €</strong></div></label>
+      <label class="radio-card"><input type="radio" name="budget"><div class="radio-card-body"><strong>Plus de 5 000 €</strong></div></label>
+      <label class="radio-card"><input type="radio" name="budget"><div class="radio-card-body"><strong>Je préfère qu'on me fasse une proposition</strong></div></label>
+    </div>
+    <div class="field">
+      <label>Délai souhaité <span class="req">*</span></label>
+      <label class="radio-card"><input type="radio" name="delai"><div class="radio-card-body"><strong>Urgent — moins de 2 semaines</strong></div></label>
+      <label class="radio-card"><input type="radio" name="delai"><div class="radio-card-body"><strong>Dans le mois</strong></div></label>
+      <label class="radio-card"><input type="radio" name="delai"><div class="radio-card-body"><strong>Dans les 2 à 3 mois</strong></div></label>
+      <label class="radio-card"><input type="radio" name="delai"><div class="radio-card-body"><strong>Pas de date précise</strong></div></label>
+    </div>
+    <div class="field">
+      <label>Qui gérera le site après livraison ?</label>
+      <label class="radio-card"><input type="radio" name="gestion"><div class="radio-card-body"><strong>Moi-même</strong><span>J'ai besoin d'une interface simple sans connaissance technique</span></div></label>
+      <label class="radio-card"><input type="radio" name="gestion"><div class="radio-card-body"><strong>Mon équipe</strong><span>Un collaborateur s'en chargera</span></div></label>
+      <label class="radio-card"><input type="radio" name="gestion"><div class="radio-card-body"><strong>Je vous confie la maintenance</strong><span>Vous gérez les mises à jour et modifications</span></div></label>
+    </div>
+    <div class="field">
+      <label>Contraintes particulières</label>
+      <textarea placeholder="Ex : charte imposée par une franchise / accessibilité PMR / conformité RGPD stricte / intégration avec un ERP..."></textarea>
+    </div>
+    <div class="field">
+      <label>Questions ou informations complémentaires</label>
+      <textarea placeholder="Tout ce qui n'a pas été couvert et qui pourrait nous aider à mieux comprendre votre projet..."></textarea>
+    </div>
+    <div class="field">
+      <label>Comment avez-vous connu Digizyn ?</label>
+      <select>
+        <option value="">Sélectionner...</option>
+        <option>Bouche à oreille</option><option>Google</option>
+        <option>Réseaux sociaux</option><option>LinkedIn</option><option>Autre</option>
+      </select>
+    </div>
+    <div class="nav-btns">
+      <button class="btn-prev" onclick="go(6)">← Retour</button>
+      <button class="btn-next" onclick="showRecap()">Voir le récapitulatif →</button>
+    </div>
+  </div>
+
+  <!-- RECAP -->
+  <div class="step" id="s8">
+    <div class="step-title">Récapitulatif — Vérifiez avant d'envoyer</div>
+    <div class="info-note">Relisez vos informations. Nous vous répondons sous 24h ouvrées avec un devis personnalisé gratuit.</div>
+    <div class="recap-card">
+      <h3>Contact</h3>
+      <div class="recap-row"><span class="k">Nom</span><span class="v" id="r-nom">—</span></div>
+      <div class="recap-row"><span class="k">Email</span><span class="v" id="r-email">—</span></div>
+      <div class="recap-row"><span class="k">Téléphone</span><span class="v" id="r-tel">—</span></div>
+      <div class="recap-row"><span class="k">Entreprise</span><span class="v" id="r-ent">—</span></div>
+      <div class="recap-row"><span class="k">Secteur</span><span class="v" id="r-sec">—</span></div>
+    </div>
+    <div class="recap-card">
+      <h3>Projet</h3>
+      <div class="recap-row"><span class="k">Activité</span><span class="v" id="r-act">—</span></div>
+    </div>
+    <button class="submit-btn" onclick="submit()">Envoyer mon brief à Digizyn →</button>
+    <p style="font-size:12px;color:var(--gray);text-align:center;margin-top:10px">Vos données sont confidentielles. Réponse garantie sous 24h ouvrées.</p>
+    <div style="margin-top:10px"><button class="btn-prev" style="width:100%" onclick="go(7)">← Modifier mes réponses</button></div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success" id="success">
+    <div class="success-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2>Brief envoyé !</h2>
+    <p>Merci pour votre confiance.<br>Nous avons bien reçu votre brief et vous répondrons avec un devis personnalisé <strong>sous 24h ouvrées</strong>.<br><br>En attendant, écrivez-nous à<br><strong>contact@digizyn.fr</strong></p>
+    <br>
+    <a href="index.html" style="font-size:14px;color:var(--gray);text-decoration:none">← Retour au site</a>
+  </div>
+</div>
+
+<script>
+var labels=["Informations générales","Votre projet","Cible & concurrents","Contenu & ressources","Design & style","Fonctionnalités","Budget & délais"];
+function go(n){
+  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
+  document.getElementById('s'+n).classList.add('active');
+  for(var i=1;i<=7;i++){
+    var el=document.getElementById('p'+i);
+    el.classList.toggle('done', i<=n);
+  }
+  document.getElementById('prog-label').textContent='Étape '+n+' sur 7 — '+labels[n-1];
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showRecap(){
+  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
+  document.getElementById('s8').classList.add('active');
+  for(var i=1;i<=7;i++){document.getElementById('p'+i).classList.add('done')}
+  document.getElementById('prog-label').textContent='Récapitulatif final';
+  document.getElementById('r-nom').textContent=document.getElementById('nom').value||'—';
+  document.getElementById('r-email').textContent=document.getElementById('email').value||'—';
+  document.getElementById('r-tel').textContent=document.getElementById('tel').value||'—';
+  document.getElementById('r-ent').textContent=document.getElementById('entreprise').value||'—';
+  document.getElementById('r-sec').textContent=document.getElementById('secteur').value||'—';
+  var act=document.getElementById('activite').value||'—';
+  document.getElementById('r-act').textContent=act.length>100?act.substring(0,100)+'...':act;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function submit(){
+  document.getElementById('s8').style.display='none';
+  document.getElementById('success').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function tog(btn,group){
+  btn.classList.toggle('on');
+}
+function sc(btn,group){
+  btn.closest('.scale').querySelectorAll('.sc-btn').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
