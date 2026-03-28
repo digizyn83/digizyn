@@ -1,1 +1,177 @@
-<h1>test</h1>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brief projet — Digizyn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#f5f4f0;--gray:#888;--font-h:'Syne',sans-serif;--font-b:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-b);background:var(--white);color:var(--black);font-size:16px;line-height:1.6}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;border-bottom:1px solid rgba(10,10,10,.08)}
+.logo{font-family:var(--font-h);font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.logo span{color:var(--gray);font-weight:400}
+.back{font-size:13px;color:var(--gray);text-decoration:none}
+.wrap{max-width:680px;margin:0 auto;padding:3rem 2rem 5rem}
+.header{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid rgba(10,10,10,.08)}
+.header h1{font-family:var(--font-h);font-size:32px;font-weight:600;letter-spacing:-.02em;margin-bottom:.5rem}
+.header p{font-size:14px;color:var(--gray);line-height:1.7}
+.bar{display:flex;gap:4px;margin-top:1.8rem}
+.seg{height:2px;flex:1;background:rgba(10,10,10,.1);border-radius:1px;transition:background .3s}
+.seg.done{background:var(--black)}
+.bar-label{font-size:12px;color:var(--gray);margin-top:8px}
+.step{display:none}
+.step.active{display:block}
+.step-title{font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(10,10,10,.08)}
+.field{margin-bottom:1.6rem}
+.field label.lbl{display:block;font-size:14px;font-weight:500;margin-bottom:5px}
+.hint{font-size:12px;color:var(--gray);margin-bottom:7px;line-height:1.5}
+/* Inputs texte/select/textarea UNIQUEMENT */
+input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{
+  width:100%;font-size:14px;font-family:var(--font-b);
+  border:1px solid rgba(10,10,10,.15);border-radius:2px;
+  padding:10px 13px;background:var(--white);color:var(--black);
+  outline:none;transition:border-color .2s
+}
+input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus,
+input[type=url]:focus,select:focus,textarea:focus{border-color:var(--black)}
+textarea{resize:vertical;min-height:90px;line-height:1.6}
+/* Checkbox et radio — apparence native */
+input[type=checkbox],input[type=radio]{
+  width:17px;height:17px;cursor:pointer;
+  accent-color:var(--black);flex-shrink:0
+}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+/* Carte radio */
+.rcard{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;
+  border:1px solid rgba(10,10,10,.12);border-radius:2px;cursor:pointer;
+  margin-bottom:8px;transition:border-color .2s}
+.rcard:hover{border-color:rgba(10,10,10,.3)}
+.rcard input{margin-top:3px}
+.rcard.selected{border-color:var(--black);background:rgba(0,0,0,.03)}
+.rcard-body strong{display:block;font-size:14px;font-weight:500;margin-bottom:2px}
+.rcard-body span{font-size:12px;color:var(--gray)}
+/* Carte checkbox */
+.ccard{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;
+  border:1px solid rgba(10,10,10,.12);border-radius:2px;cursor:pointer;
+  margin-bottom:6px;transition:all .2s}
+.ccard:hover{border-color:rgba(10,10,10,.3)}
+.ccard input{margin-top:3px}
+.ccard.selected{border-color:var(--black);background:rgba(0,0,0,.03)}
+.ccard-body strong{display:block;font-size:13px;font-weight:500;margin-bottom:1px}
+.ccard-body span{font-size:12px;color:var(--gray)}
+/* Tags */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.tag{font-size:13px;padding:7px 16px;border:1px solid rgba(10,10,10,.15);
+  border-radius:2px;cursor:pointer;color:var(--gray);background:transparent;
+  transition:all .15s;font-family:var(--font-b)}
+.tag:hover{border-color:rgba(10,10,10,.3);color:var(--black)}
+.tag.on{background:var(--black);color:var(--white);border-color:var(--black)}
+/* Échelle */
+.scale{display:flex;gap:8px;margin-top:6px}
+.sc{width:44px;height:44px;border:1px solid rgba(10,10,10,.15);border-radius:2px;
+  font-size:14px;cursor:pointer;background:transparent;color:var(--gray);
+  font-family:var(--font-b);transition:all .15s}
+.sc:hover{border-color:var(--black);color:var(--black)}
+.sc.on{background:var(--black);color:var(--white);border-color:var(--black)}
+.sc-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-top:5px}
+/* Navigation */
+.nav-btns{display:flex;gap:10px;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(10,10,10,.08)}
+.btn-next{flex:1;padding:13px;background:var(--black);color:var(--white);
+  border:1px solid var(--black);border-radius:2px;font-size:14px;font-weight:500;
+  font-family:var(--font-b);cursor:pointer;transition:opacity .2s}
+.btn-next:hover{opacity:.8}
+.btn-prev{padding:13px 20px;background:transparent;color:var(--gray);
+  border:1px solid rgba(10,10,10,.15);border-radius:2px;font-size:14px;
+  font-family:var(--font-b);cursor:pointer}
+.btn-prev:hover{color:var(--black);border-color:var(--black)}
+.req{color:#c0392b}
+.note{background:rgba(10,10,10,.04);border-left:2px solid rgba(10,10,10,.2);
+  padding:12px 14px;font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:1.4rem}
+/* Récap */
+.recap-card{border:1px solid rgba(10,10,10,.12);border-radius:2px;padding:1.2rem;margin-bottom:12px}
+.recap-card h3{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
+.recap-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid rgba(10,10,10,.06)}
+.recap-row:last-child{border-bottom:none}
+.recap-row .k{color:var(--gray)}
+.recap-row .v{font-weight:500;max-width:55%;text-align:right}
+.btn-submit{width:100%;padding:14px;background:var(--black);color:var(--white);
+  border:none;border-radius:2px;font-size:15px;font-weight:500;
+  font-family:var(--font-b);cursor:pointer;margin-top:12px;transition:opacity .2s}
+.btn-submit:hover{opacity:.8}
+/* Succès */
+.success{text-align:center;padding:4rem 1rem;display:none}
+.success-ico{width:52px;height:52px;border:1px solid rgba(10,10,10,.15);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.success h2{font-family:var(--font-h);font-size:26px;font-weight:600;margin-bottom:1rem}
+.success p{font-size:15px;color:var(--gray);line-height:1.7}
+@media(max-width:600px){nav{padding:1rem 1.2rem}.wrap{padding:2rem 1.2rem 4rem}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">DIGI<span>ZYN</span></a>
+  <a href="index.html" class="back">← Retour au site</a>
+</nav>
+
+<div class="wrap">
+  <div class="header">
+    <h1>Brief projet</h1>
+    <p>Répondez à ces questions pour que nous puissions créer votre site exactement comme vous l'imaginez — du premier coup. Environ 5 minutes.</p>
+    <div class="bar">
+      <div class="seg done" id="p1"></div>
+      <div class="seg" id="p2"></div>
+      <div class="seg" id="p3"></div>
+      <div class="seg" id="p4"></div>
+      <div class="seg" id="p5"></div>
+      <div class="seg" id="p6"></div>
+      <div class="seg" id="p7"></div>
+    </div>
+    <div class="bar-label" id="bar-label">Étape 1 sur 7 — Informations générales</div>
+  </div>
+
+  <!-- ÉTAPE 1 -->
+  <div class="step active" id="s1">
+    <div class="step-title">01 — Qui êtes-vous ?</div>
+    <div class="grid2">
+      <div class="field"><label class="lbl">Prénom &amp; nom <span class="req">*</span></label><input type="text" id="nom" placeholder="Marie Dupont"></div>
+      <div class="field"><label class="lbl">Entreprise</label><input type="text" id="entreprise" placeholder="Mon Entreprise"></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label class="lbl">Email <span class="req">*</span></label><input type="email" id="email" placeholder="marie@monentreprise.fr"></div>
+      <div class="field"><label class="lbl">Téléphone</label><input type="tel" id="tel" placeholder="+33 6 00 00 00 00"></div>
+    </div>
+    <div class="field">
+      <label class="lbl">Secteur d'activité <span class="req">*</span></label>
+      <select id="secteur">
+        <option value="">Sélectionner...</option>
+        <option>Commerce &amp; Retail</option><option>Restauration &amp; Alimentation</option>
+        <option>Santé &amp; Bien-être</option><option>Artisan &amp; BTP</option>
+        <option>Consulting &amp; Services</option><option>Mode &amp; Beauté</option>
+        <option>Éducation &amp; Formation</option><option>Immobilier</option>
+        <option>Technologie &amp; Informatique</option><option>Tourisme &amp; Hôtellerie</option>
+        <option>Sport &amp; Loisirs</option><option>Association &amp; ONG</option>
+        <option>Professions libérales</option><option>Artiste &amp; Créatif</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="lbl">Décrivez votre activité <span class="req">*</span></label>
+      <div class="hint">Qui êtes-vous ? Que proposez-vous ? À qui ?</div>
+      <textarea id="activite" placeholder="Ex : Je suis coiffeuse indépendante à Lyon, spécialisée dans les colorations végétales..."></textarea>
+    </div>
+    <div class="field">
+      <label class="lbl">Ancienneté de votre activité</label>
+      <div class="tags" id="t-anc">
+        <button type="button" class="tag" onclick="tog(this,'t-anc')">Je démarre</button>
+        <button type="button" class="tag" onclick="tog(this,'t-anc')">Moins d'1 an</button>
+        <button type="button" class="tag" onclick="tog(this,'t-anc')">1 à 3 ans</button>
+        <button type="button" class="tag" onclick="tog(this,'t-anc')">Plus de 3 ans</button>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="btn-next" onclick="go(2)">Suivant →</button>
+    </div>
+  </div>
