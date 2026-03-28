@@ -22,89 +22,59 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem
 .seg{height:2px;flex:1;background:rgba(10,10,10,.1);border-radius:1px;transition:background .3s}
 .seg.done{background:var(--black)}
 .bar-label{font-size:12px;color:var(--gray);margin-top:8px}
-.step{display:none}
-.step.active{display:block}
+.step{display:none}.step.active{display:block}
 .step-title{font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(10,10,10,.08)}
 .field{margin-bottom:1.6rem}
 .field label.lbl{display:block;font-size:14px;font-weight:500;margin-bottom:5px}
 .hint{font-size:12px;color:var(--gray);margin-bottom:7px;line-height:1.5}
-/* Inputs texte/select/textarea UNIQUEMENT */
 input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{
   width:100%;font-size:14px;font-family:var(--font-b);
   border:1px solid rgba(10,10,10,.15);border-radius:2px;
   padding:10px 13px;background:var(--white);color:var(--black);
-  outline:none;transition:border-color .2s
-}
+  outline:none;transition:border-color .2s}
 input[type=text]:focus,input[type=email]:focus,input[type=tel]:focus,
 input[type=url]:focus,select:focus,textarea:focus{border-color:var(--black)}
 textarea{resize:vertical;min-height:90px;line-height:1.6}
-/* Checkbox et radio — apparence native */
-input[type=checkbox],input[type=radio]{
-  width:17px;height:17px;cursor:pointer;
-  accent-color:var(--black);flex-shrink:0
-}
+input[type=checkbox],input[type=radio]{width:17px;height:17px;cursor:pointer;accent-color:var(--black);flex-shrink:0}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-/* Carte radio */
-.rcard{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;
-  border:1px solid rgba(10,10,10,.12);border-radius:2px;cursor:pointer;
-  margin-bottom:8px;transition:border-color .2s}
+.rcard{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid rgba(10,10,10,.12);border-radius:2px;cursor:pointer;margin-bottom:8px;transition:border-color .2s}
 .rcard:hover{border-color:rgba(10,10,10,.3)}
 .rcard input{margin-top:3px}
 .rcard.selected{border-color:var(--black);background:rgba(0,0,0,.03)}
 .rcard-body strong{display:block;font-size:14px;font-weight:500;margin-bottom:2px}
 .rcard-body span{font-size:12px;color:var(--gray)}
-/* Carte checkbox */
-.ccard{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;
-  border:1px solid rgba(10,10,10,.12);border-radius:2px;cursor:pointer;
-  margin-bottom:6px;transition:all .2s}
+.ccard{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border:1px solid rgba(10,10,10,.12);border-radius:2px;cursor:pointer;margin-bottom:6px;transition:all .2s}
 .ccard:hover{border-color:rgba(10,10,10,.3)}
 .ccard input{margin-top:3px}
 .ccard.selected{border-color:var(--black);background:rgba(0,0,0,.03)}
 .ccard-body strong{display:block;font-size:13px;font-weight:500;margin-bottom:1px}
 .ccard-body span{font-size:12px;color:var(--gray)}
-/* Tags */
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.tag{font-size:13px;padding:7px 16px;border:1px solid rgba(10,10,10,.15);
-  border-radius:2px;cursor:pointer;color:var(--gray);background:transparent;
-  transition:all .15s;font-family:var(--font-b)}
+.tag{font-size:13px;padding:7px 16px;border:1px solid rgba(10,10,10,.15);border-radius:2px;cursor:pointer;color:var(--gray);background:transparent;transition:all .15s;font-family:var(--font-b)}
 .tag:hover{border-color:rgba(10,10,10,.3);color:var(--black)}
 .tag.on{background:var(--black);color:var(--white);border-color:var(--black)}
-/* Échelle */
 .scale{display:flex;gap:8px;margin-top:6px}
-.sc{width:44px;height:44px;border:1px solid rgba(10,10,10,.15);border-radius:2px;
-  font-size:14px;cursor:pointer;background:transparent;color:var(--gray);
-  font-family:var(--font-b);transition:all .15s}
+.sc{width:44px;height:44px;border:1px solid rgba(10,10,10,.15);border-radius:2px;font-size:14px;cursor:pointer;background:transparent;color:var(--gray);font-family:var(--font-b);transition:all .15s}
 .sc:hover{border-color:var(--black);color:var(--black)}
 .sc.on{background:var(--black);color:var(--white);border-color:var(--black)}
 .sc-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--gray);margin-top:5px}
-/* Navigation */
 .nav-btns{display:flex;gap:10px;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(10,10,10,.08)}
-.btn-next{flex:1;padding:13px;background:var(--black);color:var(--white);
-  border:1px solid var(--black);border-radius:2px;font-size:14px;font-weight:500;
-  font-family:var(--font-b);cursor:pointer;transition:opacity .2s}
+.btn-next{flex:1;padding:13px;background:var(--black);color:var(--white);border:1px solid var(--black);border-radius:2px;font-size:14px;font-weight:500;font-family:var(--font-b);cursor:pointer;transition:opacity .2s}
 .btn-next:hover{opacity:.8}
-.btn-prev{padding:13px 20px;background:transparent;color:var(--gray);
-  border:1px solid rgba(10,10,10,.15);border-radius:2px;font-size:14px;
-  font-family:var(--font-b);cursor:pointer}
+.btn-prev{padding:13px 20px;background:transparent;color:var(--gray);border:1px solid rgba(10,10,10,.15);border-radius:2px;font-size:14px;font-family:var(--font-b);cursor:pointer}
 .btn-prev:hover{color:var(--black);border-color:var(--black)}
 .req{color:#c0392b}
-.note{background:rgba(10,10,10,.04);border-left:2px solid rgba(10,10,10,.2);
-  padding:12px 14px;font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:1.4rem}
-/* Récap */
+.note{background:rgba(10,10,10,.04);border-left:2px solid rgba(10,10,10,.2);padding:12px 14px;font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:1.4rem}
 .recap-card{border:1px solid rgba(10,10,10,.12);border-radius:2px;padding:1.2rem;margin-bottom:12px}
 .recap-card h3{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
 .recap-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid rgba(10,10,10,.06)}
 .recap-row:last-child{border-bottom:none}
 .recap-row .k{color:var(--gray)}
 .recap-row .v{font-weight:500;max-width:55%;text-align:right}
-.btn-submit{width:100%;padding:14px;background:var(--black);color:var(--white);
-  border:none;border-radius:2px;font-size:15px;font-weight:500;
-  font-family:var(--font-b);cursor:pointer;margin-top:12px;transition:opacity .2s}
+.btn-submit{width:100%;padding:14px;background:var(--black);color:var(--white);border:none;border-radius:2px;font-size:15px;font-weight:500;font-family:var(--font-b);cursor:pointer;margin-top:12px;transition:opacity .2s}
 .btn-submit:hover{opacity:.8}
-/* Succès */
 .success{text-align:center;padding:4rem 1rem;display:none}
-.success-ico{width:52px;height:52px;border:1px solid rgba(10,10,10,.15);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.success-ico{width:52px;height:52px;border:1px solid rgba(10,10,10,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
 .success h2{font-family:var(--font-h);font-size:26px;font-weight:600;margin-bottom:1rem}
 .success p{font-size:15px;color:var(--gray);line-height:1.7}
 @media(max-width:600px){nav{padding:1rem 1.2rem}.wrap{padding:2rem 1.2rem 4rem}.grid2{grid-template-columns:1fr}}
@@ -115,19 +85,13 @@ input[type=checkbox],input[type=radio]{
   <a href="index.html" class="logo">DIGI<span>ZYN</span></a>
   <a href="index.html" class="back">← Retour au site</a>
 </nav>
-
 <div class="wrap">
   <div class="header">
     <h1>Brief projet</h1>
     <p>Répondez à ces questions pour que nous puissions créer votre site exactement comme vous l'imaginez — du premier coup. Environ 5 minutes.</p>
     <div class="bar">
-      <div class="seg done" id="p1"></div>
-      <div class="seg" id="p2"></div>
-      <div class="seg" id="p3"></div>
-      <div class="seg" id="p4"></div>
-      <div class="seg" id="p5"></div>
-      <div class="seg" id="p6"></div>
-      <div class="seg" id="p7"></div>
+      <div class="seg done" id="p1"></div><div class="seg" id="p2"></div><div class="seg" id="p3"></div>
+      <div class="seg" id="p4"></div><div class="seg" id="p5"></div><div class="seg" id="p6"></div><div class="seg" id="p7"></div>
     </div>
     <div class="bar-label" id="bar-label">Étape 1 sur 7 — Informations générales</div>
   </div>
@@ -153,8 +117,7 @@ input[type=checkbox],input[type=radio]{
         <option>Éducation &amp; Formation</option><option>Immobilier</option>
         <option>Technologie &amp; Informatique</option><option>Tourisme &amp; Hôtellerie</option>
         <option>Sport &amp; Loisirs</option><option>Association &amp; ONG</option>
-        <option>Professions libérales</option><option>Artiste &amp; Créatif</option>
-        <option>Autre</option>
+        <option>Professions libérales</option><option>Artiste &amp; Créatif</option><option>Autre</option>
       </select>
     </div>
     <div class="field">
@@ -165,13 +128,308 @@ input[type=checkbox],input[type=radio]{
     <div class="field">
       <label class="lbl">Ancienneté de votre activité</label>
       <div class="tags" id="t-anc">
-        <button type="button" class="tag" onclick="tog(this,'t-anc')">Je démarre</button>
-        <button type="button" class="tag" onclick="tog(this,'t-anc')">Moins d'1 an</button>
-        <button type="button" class="tag" onclick="tog(this,'t-anc')">1 à 3 ans</button>
-        <button type="button" class="tag" onclick="tog(this,'t-anc')">Plus de 3 ans</button>
+        <button type="button" class="tag" onclick="tog(this)">Je démarre</button>
+        <button type="button" class="tag" onclick="tog(this)">Moins d'1 an</button>
+        <button type="button" class="tag" onclick="tog(this)">1 à 3 ans</button>
+        <button type="button" class="tag" onclick="tog(this)">Plus de 3 ans</button>
       </div>
     </div>
     <div class="nav-btns">
       <button type="button" class="btn-next" onclick="go(2)">Suivant →</button>
     </div>
   </div>
+
+  <!-- ÉTAPE 2 -->
+  <div class="step" id="s2">
+    <div class="step-title">02 — Votre projet</div>
+    <div class="field">
+      <label class="lbl">Type de site <span class="req">*</span></label>
+      <div class="rcard" onclick="pickRadio(this,'type')"><input type="radio" name="type"><div class="rcard-body"><strong>Site vitrine</strong><span>Présenter votre activité et obtenir des contacts</span></div></div>
+      <div class="rcard" onclick="pickRadio(this,'type')"><input type="radio" name="type"><div class="rcard-body"><strong>Boutique e-commerce</strong><span>Vendre en ligne avec paiement sécurisé</span></div></div>
+      <div class="rcard" onclick="pickRadio(this,'type')"><input type="radio" name="type"><div class="rcard-body"><strong>Portfolio / Book créatif</strong><span>Présenter vos réalisations à des clients</span></div></div>
+      <div class="rcard" onclick="pickRadio(this,'type')"><input type="radio" name="type"><div class="rcard-body"><strong>Site avec espace membre</strong><span>Contenu privé, abonnements, cours en ligne</span></div></div>
+      <div class="rcard" onclick="pickRadio(this,'type')"><input type="radio" name="type"><div class="rcard-body"><strong>Application web sur mesure</strong><span>Outil métier ou plateforme spécifique</span></div></div>
+    </div>
+    <div class="field">
+      <label class="lbl">Situation actuelle</label>
+      <div class="rcard" onclick="pickRadio(this,'exist')"><input type="radio" name="exist"><div class="rcard-body"><strong>Premier site</strong><span>Je n'ai pas encore de site internet</span></div></div>
+      <div class="rcard" onclick="pickRadio(this,'exist')"><input type="radio" name="exist"><div class="rcard-body"><strong>Refonte complète</strong><span>J'ai un site, je veux le refaire entièrement</span></div></div>
+      <div class="rcard" onclick="pickRadio(this,'exist')"><input type="radio" name="exist"><div class="rcard-body"><strong>Amélioration</strong><span>J'ai un site, je veux l'améliorer</span></div></div>
+    </div>
+    <div class="field"><label class="lbl">URL actuelle (si applicable)</label><input type="url" placeholder="https://www.monsite.fr"></div>
+    <div class="field">
+      <label class="lbl">Objectif principal <span class="req">*</span></label>
+      <div class="tags" id="t-obj">
+        <button type="button" class="tag" onclick="tog(this)">Prendre contact</button>
+        <button type="button" class="tag" onclick="tog(this)">Prendre RDV</button>
+        <button type="button" class="tag" onclick="tog(this)">Acheter en ligne</button>
+        <button type="button" class="tag" onclick="tog(this)">Me faire connaître</button>
+        <button type="button" class="tag" onclick="tog(this)">Générer des devis</button>
+        <button type="button" class="tag" onclick="tog(this)">Fidéliser</button>
+        <button type="button" class="tag" onclick="tog(this)">Recruter</button>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="btn-prev" onclick="go(1)">← Retour</button>
+      <button type="button" class="btn-next" onclick="go(3)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 3 -->
+  <div class="step" id="s3">
+    <div class="step-title">03 — Votre cible &amp; concurrents</div>
+    <div class="field">
+      <label class="lbl">Décrivez votre client idéal <span class="req">*</span></label>
+      <div class="hint">Âge, profession, localisation, ce qu'il recherche...</div>
+      <textarea placeholder="Ex : Femmes de 30 à 50 ans, actives, qui cherchent un service de qualité près de chez elles..."></textarea>
+    </div>
+    <div class="field">
+      <label class="lbl">Zone géographique</label>
+      <div class="tags">
+        <button type="button" class="tag" onclick="tog(this)">Ma ville</button>
+        <button type="button" class="tag" onclick="tog(this)">Ma région</button>
+        <button type="button" class="tag" onclick="tog(this)">France entière</button>
+        <button type="button" class="tag" onclick="tog(this)">Europe</button>
+        <button type="button" class="tag" onclick="tog(this)">International</button>
+      </div>
+    </div>
+    <div class="field">
+      <label class="lbl">Vos principaux concurrents</label>
+      <textarea placeholder="1. Concurrent A — www.concurrent-a.fr&#10;2. Concurrent B — www.concurrent-b.fr"></textarea>
+    </div>
+    <div class="field">
+      <label class="lbl">Ce qui vous différencie <span class="req">*</span></label>
+      <textarea placeholder="Ex : Je suis la seule à utiliser des colorations 100% végétales dans ma ville..."></textarea>
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="btn-prev" onclick="go(2)">← Retour</button>
+      <button type="button" class="btn-next" onclick="go(4)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 4 -->
+  <div class="step" id="s4">
+    <div class="step-title">04 — Contenu &amp; ressources</div>
+    <div class="field">
+      <label class="lbl">Ce que vous avez déjà <span class="req">*</span></label>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Un logo</strong><span>Format numérique (PNG, SVG, AI...)</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Une charte graphique</strong><span>Couleurs officielles, polices définies</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Des textes rédigés</strong><span>Contenu prêt pour les pages du site</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Des photos professionnelles</strong><span>De votre activité, produits ou équipe</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Des vidéos</strong><span>Présentation, témoignages, produits</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Un nom de domaine</strong><span>Ex : monsite.fr déjà enregistré</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Rien — besoin d'aide pour tout</strong><span>Nous pouvons vous accompagner sur chaque point</span></div></div>
+    </div>
+    <div class="field"><label class="lbl">Nom de domaine souhaité</label><input type="text" placeholder="Ex : monentreprise.fr"></div>
+    <div class="field">
+      <label class="lbl">Pour vos textes</label>
+      <div class="rcard" onclick="pickRadio(this,'textes')"><input type="radio" name="textes"><div class="rcard-body"><strong>Je fournis mes textes moi-même</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'textes')"><input type="radio" name="textes"><div class="rcard-body"><strong>Je fournis les grandes lignes, vous rédigez</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'textes')"><input type="radio" name="textes"><div class="rcard-body"><strong>J'ai besoin que vous rédigiez tout</strong></div></div>
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="btn-prev" onclick="go(3)">← Retour</button>
+      <button type="button" class="btn-next" onclick="go(5)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 5 -->
+  <div class="step" id="s5">
+    <div class="step-title">05 — Design &amp; identité visuelle</div>
+    <div class="field">
+      <label class="lbl">Style souhaité <span class="req">*</span></label>
+      <div class="tags">
+        <button type="button" class="tag" onclick="tog(this)">Moderne &amp; épuré</button>
+        <button type="button" class="tag" onclick="tog(this)">Élégant &amp; haut de gamme</button>
+        <button type="button" class="tag" onclick="tog(this)">Chaleureux &amp; humain</button>
+        <button type="button" class="tag" onclick="tog(this)">Sobre &amp; professionnel</button>
+        <button type="button" class="tag" onclick="tog(this)">Coloré &amp; dynamique</button>
+        <button type="button" class="tag" onclick="tog(this)">Minimaliste</button>
+        <button type="button" class="tag" onclick="tog(this)">Original &amp; créatif</button>
+        <button type="button" class="tag" onclick="tog(this)">Luxe &amp; premium</button>
+        <button type="button" class="tag" onclick="tog(this)">Naturel &amp; écologique</button>
+        <button type="button" class="tag" onclick="tog(this)">Jeune &amp; tendance</button>
+        <button type="button" class="tag" onclick="tog(this)">Technologique</button>
+        <button type="button" class="tag" onclick="tog(this)">Artisanal &amp; authentique</button>
+      </div>
+    </div>
+    <div class="field"><label class="lbl">Vos couleurs de marque</label><input type="text" placeholder="Ex : Bleu marine #1A2B4C et doré — ou 'je préfère les tons chauds'"></div>
+    <div class="field">
+      <label class="lbl">Sites que vous aimez <span class="req">*</span></label>
+      <div class="hint">2 à 4 URLs + pourquoi vous aimez leur design</div>
+      <textarea placeholder="https://www.site1.fr — j'aime le côté épuré&#10;https://www.site2.com — j'aime les animations douces"></textarea>
+    </div>
+    <div class="field">
+      <label class="lbl">Niveau de modernité souhaité</label>
+      <div class="scale" id="sc-mod">
+        <button type="button" class="sc" onclick="pickSc(this,'sc-mod')">1</button>
+        <button type="button" class="sc" onclick="pickSc(this,'sc-mod')">2</button>
+        <button type="button" class="sc on" onclick="pickSc(this,'sc-mod')">3</button>
+        <button type="button" class="sc" onclick="pickSc(this,'sc-mod')">4</button>
+        <button type="button" class="sc" onclick="pickSc(this,'sc-mod')">5</button>
+      </div>
+      <div class="sc-labels"><span>Classique &amp; intemporel</span><span>Très moderne &amp; audacieux</span></div>
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="btn-prev" onclick="go(4)">← Retour</button>
+      <button type="button" class="btn-next" onclick="go(6)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 6 -->
+  <div class="step" id="s6">
+    <div class="step-title">06 — Fonctionnalités</div>
+    <div class="field">
+      <label class="lbl">Fonctionnalités souhaitées <span class="req">*</span></label>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Formulaire de contact</strong><span>Les visiteurs vous envoient un message directement</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Prise de rendez-vous en ligne</strong><span>Calendrier intégré, réservation automatique</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Galerie photos / portfolio</strong><span>Afficher vos réalisations ou produits</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Boutique en ligne &amp; paiement</strong><span>Vente de produits ou services avec CB, PayPal...</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Blog / actualités</strong><span>Publier des articles régulièrement</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Carte Google Maps</strong><span>Afficher votre adresse et zone d'intervention</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Avis clients / témoignages</strong><span>Afficher vos avis Google ou témoignages vidéo</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Newsletter</strong><span>Collecter les emails et envoyer des campagnes</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Devis en ligne</strong><span>Les visiteurs demandent un devis automatiquement</span></div></div>
+      <div class="ccard" onclick="togCard(this)"><input type="checkbox"><div class="ccard-body"><strong>Espace client / connexion</strong><span>Zone privée pour vos clients</span></div></div>
+    </div>
+    <div class="field"><label class="lbl">Outils existants à connecter</label><textarea placeholder="Ex : j'utilise Doctolib pour mes RDV / j'utilise Shopify actuellement..."></textarea></div>
+    <div class="nav-btns">
+      <button type="button" class="btn-prev" onclick="go(5)">← Retour</button>
+      <button type="button" class="btn-next" onclick="go(7)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 7 -->
+  <div class="step" id="s7">
+    <div class="step-title">07 — Budget &amp; délais</div>
+    <div class="note">Être transparent sur votre budget nous permet de vous proposer la meilleure solution dans votre enveloppe.</div>
+    <div class="field">
+      <label class="lbl">Budget pour ce projet <span class="req">*</span></label>
+      <div class="rcard" onclick="pickRadio(this,'budget')"><input type="radio" name="budget"><div class="rcard-body"><strong>Moins de 500 €</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'budget')"><input type="radio" name="budget"><div class="rcard-body"><strong>500 € à 1 000 €</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'budget')"><input type="radio" name="budget"><div class="rcard-body"><strong>1 000 € à 2 000 €</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'budget')"><input type="radio" name="budget"><div class="rcard-body"><strong>2 000 € à 5 000 €</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'budget')"><input type="radio" name="budget"><div class="rcard-body"><strong>Plus de 5 000 €</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'budget')"><input type="radio" name="budget"><div class="rcard-body"><strong>Je préfère qu'on me fasse une proposition</strong></div></div>
+    </div>
+    <div class="field">
+      <label class="lbl">Délai souhaité <span class="req">*</span></label>
+      <div class="rcard" onclick="pickRadio(this,'delai')"><input type="radio" name="delai"><div class="rcard-body"><strong>Urgent — moins de 2 semaines</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'delai')"><input type="radio" name="delai"><div class="rcard-body"><strong>Dans le mois</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'delai')"><input type="radio" name="delai"><div class="rcard-body"><strong>Dans les 2 à 3 mois</strong></div></div>
+      <div class="rcard" onclick="pickRadio(this,'delai')"><input type="radio" name="delai"><div class="rcard-body"><strong>Pas de date précise</strong></div></div>
+    </div>
+    <div class="field">
+      <label class="lbl">Qui gérera le site après livraison ?</label>
+      <div class="rcard" onclick="pickRadio(this,'gestion')"><input type="radio" name="gestion"><div class="rcard-body"><strong>Je vous confie la maintenance</strong><span>Vous gérez les mises à jour et modifications</span></div></div>
+      <div class="rcard" onclick="pickRadio(this,'gestion')"><input type="radio" name="gestion"><div class="rcard-body"><strong>Moi-même</strong><span>J'ai besoin d'une interface simple sans connaissance technique</span></div></div>
+      <div class="rcard" onclick="pickRadio(this,'gestion')"><input type="radio" name="gestion"><div class="rcard-body"><strong>Mon équipe</strong><span>Un collaborateur s'en chargera</span></div></div>
+    </div>
+    <div class="field"><label class="lbl">Informations complémentaires</label><textarea placeholder="Tout ce qui n'a pas été couvert et qui pourrait nous aider à mieux comprendre votre projet..."></textarea></div>
+    <div class="field">
+      <label class="lbl">Comment avez-vous connu Digizyn ?</label>
+      <select><option value="">Sélectionner...</option><option>Bouche à oreille</option><option>Google</option><option>Réseaux sociaux</option><option>LinkedIn</option><option>Autre</option></select>
+    </div>
+    <div class="nav-btns">
+      <button type="button" class="btn-prev" onclick="go(6)">← Retour</button>
+      <button type="button" class="btn-next" onclick="showRecap()">Voir le récapitulatif →</button>
+    </div>
+  </div>
+
+  <!-- RÉCAP -->
+  <div class="step" id="s8">
+    <div class="step-title">Récapitulatif — Vérifiez avant d'envoyer</div>
+    <div class="note">Relisez vos informations. Nous vous répondons sous 24h ouvrées avec un devis personnalisé gratuit.</div>
+    <div class="recap-card">
+      <h3>Contact</h3>
+      <div class="recap-row"><span class="k">Nom</span><span class="v" id="r-nom">—</span></div>
+      <div class="recap-row"><span class="k">Email</span><span class="v" id="r-email">—</span></div>
+      <div class="recap-row"><span class="k">Téléphone</span><span class="v" id="r-tel">—</span></div>
+      <div class="recap-row"><span class="k">Entreprise</span><span class="v" id="r-ent">—</span></div>
+      <div class="recap-row"><span class="k">Secteur</span><span class="v" id="r-sec">—</span></div>
+    </div>
+    <div class="recap-card">
+      <h3>Projet</h3>
+      <div class="recap-row"><span class="k">Activité</span><span class="v" id="r-act">—</span></div>
+    </div>
+    <button type="button" class="btn-submit" onclick="sendForm()">Envoyer mon brief à Digizyn →</button>
+    <p style="font-size:12px;color:var(--gray);text-align:center;margin-top:10px">Vos données sont confidentielles. Réponse garantie sous 24h ouvrées.</p>
+    <div style="margin-top:10px"><button type="button" class="btn-prev" style="width:100%" onclick="go(7)">← Modifier mes réponses</button></div>
+  </div>
+
+  <!-- SUCCÈS -->
+  <div class="success" id="success">
+    <div class="success-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2>Brief envoyé !</h2>
+    <p>Merci pour votre confiance.<br>Nous avons bien reçu votre brief et vous répondrons avec un devis personnalisé <strong>sous 24h ouvrées</strong>.<br><br>En attendant, écrivez-nous à<br><strong>contact@digizyn.fr</strong></p>
+    <br>
+    <a href="index.html" style="font-size:14px;color:var(--gray);text-decoration:none">← Retour au site</a>
+  </div>
+</div>
+
+<script>
+var labels=['Informations générales','Votre projet','Cible & concurrents','Contenu & ressources','Design & style','Fonctionnalités','Budget & délais'];
+function go(n){
+  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('s'+n).classList.add('active');
+  for(var i=1;i<=7;i++){document.getElementById('p'+i).classList.toggle('done',i<=n);}
+  document.getElementById('bar-label').textContent='Étape '+n+' sur 7 — '+labels[n-1];
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showRecap(){
+  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('s8').classList.add('active');
+  for(var i=1;i<=7;i++){document.getElementById('p'+i).classList.add('done');}
+  document.getElementById('bar-label').textContent='Récapitulatif final';
+  document.getElementById('r-nom').textContent=document.getElementById('nom').value||'—';
+  document.getElementById('r-email').textContent=document.getElementById('email').value||'—';
+  document.getElementById('r-tel').textContent=document.getElementById('tel').value||'—';
+  document.getElementById('r-ent').textContent=document.getElementById('entreprise').value||'—';
+  document.getElementById('r-sec').textContent=document.getElementById('secteur').value||'—';
+  var act=document.getElementById('activite').value||'—';
+  document.getElementById('r-act').textContent=act.length>100?act.substring(0,100)+'...':act;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function tog(el){el.classList.toggle('on');}
+function pickRadio(card,name){
+  document.querySelectorAll('.rcard').forEach(function(c){
+    if(c.querySelector('input[name='+name+']')){c.classList.remove('selected');c.querySelector('input').checked=false;}
+  });
+  card.classList.add('selected');card.querySelector('input').checked=true;
+}
+function togCard(card){
+  card.classList.toggle('selected');
+  card.querySelector('input').checked=card.classList.contains('selected');
+}
+function pickSc(btn,group){
+  document.querySelectorAll('#'+group+' .sc').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+}
+function sendForm(){
+  var btn=document.querySelector('.btn-submit');
+  btn.textContent='Envoi en cours...';btn.disabled=true;
+  var data=new FormData();
+  data.append('_subject','Nouveau brief client - Digizyn');
+  data.append('nom',document.getElementById('nom').value||'—');
+  data.append('email',document.getElementById('email').value||'—');
+  data.append('telephone',document.getElementById('tel').value||'—');
+  data.append('entreprise',document.getElementById('entreprise').value||'—');
+  data.append('secteur',document.getElementById('secteur').value||'—');
+  data.append('activite',document.getElementById('activite').value||'—');
+  data.append('_replyto',document.getElementById('email').value||'');
+  var opts=[];
+  document.querySelectorAll('.ccard.selected .ccard-body strong').forEach(function(s){opts.push(s.textContent);});
+  if(opts.length)data.append('options_cochees',opts.join(' | '));
+  document.querySelectorAll('.rcard.selected .rcard-body strong').forEach(function(s){data.append('choix',s.textContent);});
+  var tags=[];
+  document.querySelectorAll('.tag.on').forEach(function(t){tags.push(t.textContent.trim());});
+  if(tags.length)data.append('tags',tags.join(', '));
+  fetch('https://formspree.io/f/xgopoyzn',{method:'POST',body:data,headers:{'Accept':'application/json'}})
+  .then(function(r){
+    if(r.ok){document.getElementById('s8').style.display='none';document.getElementById('success').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
+    else{btn.textContent='Envoyer mon brief à Digizyn →';btn.disabled=false;alert('Une erreur est survenue. Veuillez réessayer.');}
+  }).catch(function(){btn.textContent='Envoyer mon brief à Digizyn →';btn.disabled=false;alert('Erreur de connexion.');});
+}
+</script>
+</body>
+</html>
