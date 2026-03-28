@@ -35,12 +35,15 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .radio-card{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid rgba(10,10,10,0.12);border-radius:2px;cursor:pointer;margin-bottom:8px;transition:border-color 0.2s}
 .radio-card:hover{border-color:rgba(10,10,10,0.3)}
-.radio-card input{margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--black)}
+.radio-card input{margin-top:2px;width:18px;height:18px;flex-shrink:0;accent-color:var(--black);cursor:pointer;-webkit-appearance:auto;appearance:auto}
+.radio-card:has(input:checked){border-color:var(--black);background:rgba(0,0,0,0.03)}
 .radio-card-body strong{display:block;font-size:14px;font-weight:500;margin-bottom:2px}
 .radio-card-body span{font-size:12px;color:var(--gray)}
-.chk-card{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border:1px solid rgba(10,10,10,0.12);border-radius:2px;cursor:pointer;margin-bottom:6px;transition:border-color 0.2s}
-.chk-card:hover{border-color:rgba(10,10,10,0.3)}
-.chk-card input{margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--black)}
+.chk-card{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border:1px solid rgba(10,10,10,0.12);border-radius:2px;cursor:pointer;margin-bottom:6px;transition:all 0.2s}
+.chk-card:hover{border-color:rgba(10,10,10,0.3);background:rgba(0,0,0,0.02)}
+.chk-card input[type=checkbox]{margin-top:2px;width:18px;height:18px;flex-shrink:0;cursor:pointer;accent-color:var(--black);-webkit-appearance:auto;appearance:auto}
+.chk-card input[type=checkbox]:checked + .chk-card-body strong{color:var(--black)}
+.chk-card:has(input:checked){border-color:var(--black);background:rgba(0,0,0,0.03)}
 .chk-card-body strong{display:block;font-size:13px;font-weight:500;margin-bottom:1px}
 .chk-card-body span{font-size:12px;color:var(--gray)}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
@@ -416,13 +419,13 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
     <h2>Brief envoyé !</h2>
-    <p>Merci pour votre confiance.<br>Nous avons bien reçu votre brief et vous répondrons avec un devis personnalisé <strong>sous 24h ouvrées</strong>.<br><br>En attendant, écrivez-nous à<br><strong>contact@digizyn.fr</strong></p>
+    <p>Merci pour votre confiance.<br>Nous avons bien reçu votre brief et vous répondrons avec un devis personnalisé <strong>sous 24h ouvrées</strong>.<br><br>En attendant, écrivez-nous à<br><strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2c1cdccd6c3c1d6e2c6cbc5cbd8dbcc8cc4d0">[email&#160;protected]</a></strong></p>
     <br>
     <a href="index.html" style="font-size:14px;color:var(--gray);text-decoration:none">← Retour au site</a>
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var labels=["Informations générales","Votre projet","Cible & concurrents","Contenu & ressources","Design & style","Fonctionnalités","Budget & délais"];
 function go(n){
   document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
@@ -449,17 +452,60 @@ function showRecap(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function submit(){
-  document.getElementById('s8').style.display='none';
-  document.getElementById('success').style.display='block';
-  window.scrollTo({top:0,behavior:'smooth'});
+  // Collect all form data
+  var data = new FormData();
+  data.append('nom', document.getElementById('nom').value || '—');
+  data.append('email', document.getElementById('email').value || '—');
+  data.append('telephone', document.getElementById('tel').value || '—');
+  data.append('entreprise', document.getElementById('entreprise').value || '—');
+  data.append('secteur', document.getElementById('secteur').value || '—');
+  data.append('activite', document.getElementById('activite').value || '—');
+
+  // Collect checked checkboxes and radio buttons
+  var chks = [];
+  document.querySelectorAll('input[type=checkbox]:checked').forEach(function(c){
+    var label = c.closest('label') || c.parentElement;
+    if(label) chks.push(label.textContent.trim().substring(0,60));
+  });
+  if(chks.length) data.append('options_cochees', chks.join(' | '));
+
+  var radios = [];
+  document.querySelectorAll('input[type=radio]:checked').forEach(function(r){
+    var label = r.closest('label') || r.parentElement;
+    if(label) radios.push(label.textContent.trim().substring(0,60));
+  });
+
+  // Tags selected
+  var tags = [];
+  document.querySelectorAll('.tag.on').forEach(function(t){ tags.push(t.textContent.trim()); });
+  if(tags.length) data.append('tags_selectionnes', tags.join(', '));
+
+  data.append('_subject', 'Nouveau brief client - Digizyn');
+  data.append('_replyto', document.getElementById('email').value || '');
+
+  // Send to Formspree
+  var btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/xgopoyzn', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(function(r){
+    if(r.ok){
+      document.getElementById('s8').style.display='none';
+      document.getElementById('success').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    } else {
+      btn.textContent = 'Envoyer mon brief à Digizyn →';
+      btn.disabled = false;
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    }
+  }).catch(function(){
+    btn.textContent = 'Envoyer mon brief à Digizyn →';
+    btn.disabled = false;
+    alert('Une erreur est survenue. Vérifiez votre connexion.');
+  });
 }
-function tog(btn,group){
-  btn.classList.toggle('on');
-}
-function sc(btn,group){
-  btn.closest('.scale').querySelectorAll('.sc-btn').forEach(function(b){b.classList.remove('on')});
-  btn.classList.add('on');
-}
-</script>
-</body>
-</html>
+functio
