@@ -485,71 +485,71 @@ function sendForm(){
   btn.textContent='Envoi en cours...';btn.disabled=true;
   var data=new FormData();
   data.append('_subject','Nouveau brief client - Digizyn');
-
-  // ÉTAPE 1
-  data.append('Nom',document.getElementById('nom').value||'—');
-  data.append('Email',document.getElementById('email').value||'—');
-  data.append('Téléphone',document.getElementById('tel').value||'—');
-  data.append('Entreprise',document.getElementById('entreprise').value||'—');
-  data.append('Secteur',document.getElementById('secteur').value||'—');
-  data.append('Activité',document.getElementById('activite').value||'—');
-  var anc=[];document.querySelectorAll('#s1 .tag.on').forEach(function(t){anc.push(t.textContent.trim());});
-  if(anc.length)data.append('Ancienneté',anc.join(', '));
   data.append('_replyto',document.getElementById('email').value||'');
 
-  // ÉTAPE 2
+  // ── ÉTAPE 1 — Contact ──
+  data.append('01 | Nom',document.getElementById('nom').value||'—');
+  data.append('02 | Email',document.getElementById('email').value||'—');
+  data.append('03 | Téléphone',document.getElementById('tel').value||'—');
+  data.append('04 | Entreprise',document.getElementById('entreprise').value||'—');
+  data.append('05 | Secteur',document.getElementById('secteur').value||'—');
+  data.append('06 | Activité',document.getElementById('activite').value||'—');
+  var anc=[];document.querySelectorAll('#s1 .tag.on').forEach(function(t){anc.push(t.textContent.trim());});
+  data.append('07 | Ancienneté',anc.length?anc.join(', '):'—');
+
+  // ── ÉTAPE 2 — Projet ──
   var typeS=document.querySelector('#s2 input[name="type"]:checked');
-  if(typeS)data.append('Type de site',typeS.closest('.rcard').querySelector('strong').textContent);
+  data.append('08 | Type de site',typeS?typeS.closest('.rcard').querySelector('strong').textContent:'—');
   var existS=document.querySelector('#s2 input[name="exist"]:checked');
-  if(existS)data.append('Situation actuelle',existS.closest('.rcard').querySelector('strong').textContent);
+  data.append('09 | Situation actuelle',existS?existS.closest('.rcard').querySelector('strong').textContent:'—');
   var urlActuelle=document.querySelector('#s2 input[type=url]');
-  if(urlActuelle&&urlActuelle.value)data.append('URL actuelle',urlActuelle.value);
+  data.append('10 | URL actuelle',urlActuelle&&urlActuelle.value?urlActuelle.value:'—');
   var obj=[];document.querySelectorAll('#s2 .tag.on').forEach(function(t){obj.push(t.textContent.trim());});
-  if(obj.length)data.append('Objectif principal',obj.join(', '));
+  data.append('11 | Objectif principal',obj.length?obj.join(', '):'—');
 
-  // ÉTAPE 3
+  // ── ÉTAPE 3 — Cible ──
   var ta3=document.querySelectorAll('#s3 textarea');
-  if(ta3[0]&&ta3[0].value)data.append('Client idéal',ta3[0].value);
+  data.append('12 | Client idéal',ta3[0]&&ta3[0].value?ta3[0].value:'—');
   var zone=[];document.querySelectorAll('#s3 .tag.on').forEach(function(t){zone.push(t.textContent.trim());});
-  if(zone.length)data.append('Zone géographique',zone.join(', '));
-  if(ta3[1]&&ta3[1].value)data.append('Concurrents',ta3[1].value);
-  if(ta3[2]&&ta3[2].value)data.append('Différenciation',ta3[2].value);
+  data.append('13 | Zone géographique',zone.length?zone.join(', '):'—');
+  data.append('14 | Concurrents',ta3[1]&&ta3[1].value?ta3[1].value:'—');
+  data.append('15 | Différenciation',ta3[2]&&ta3[2].value?ta3[2].value:'—');
 
-  // ÉTAPE 4
+  // ── ÉTAPE 4 — Contenu ──
   var ressources=[];document.querySelectorAll('#s4 .ccard.selected .ccard-body strong').forEach(function(s){ressources.push(s.textContent);});
-  if(ressources.length)data.append('Ressources disponibles',ressources.join(' | '));
+  data.append('16 | Ressources disponibles',ressources.length?ressources.join(' | '):'—');
   var domaine=document.querySelector('#s4 input[type=text]');
-  if(domaine&&domaine.value)data.append('Nom de domaine souhaité',domaine.value);
+  data.append('17 | Nom de domaine souhaité',domaine&&domaine.value?domaine.value:'—');
   var textesS=document.querySelector('#s4 input[name="textes"]:checked');
-  if(textesS)data.append('Rédaction textes',textesS.closest('.rcard').querySelector('strong').textContent);
+  data.append('18 | Rédaction textes',textesS?textesS.closest('.rcard').querySelector('strong').textContent:'—');
 
-  // ÉTAPE 5
+  // ── ÉTAPE 5 — Design ──
   var styles=[];document.querySelectorAll('#s5 .tag.on').forEach(function(t){styles.push(t.textContent.trim());});
-  if(styles.length)data.append('Style souhaité',styles.join(', '));
+  data.append('19 | Style souhaité',styles.length?styles.join(', '):'—');
   var couleurs=document.querySelector('#s5 input[type=text]');
-  if(couleurs&&couleurs.value)data.append('Couleurs de marque',couleurs.value);
+  data.append('20 | Couleurs de marque',couleurs&&couleurs.value?couleurs.value:'—');
   var ta5=document.querySelector('#s5 textarea');
-  if(ta5&&ta5.value)data.append('Sites inspirants',ta5.value);
+  data.append('21 | Sites inspirants',ta5&&ta5.value?ta5.value:'—');
   var mod=document.querySelector('#sc-mod .sc.on');
-  if(mod)data.append('Niveau modernité',mod.textContent+'/5');
+  data.append('22 | Niveau modernité',mod?mod.textContent+'/5':'—');
 
-  // ÉTAPE 6
+  // ── ÉTAPE 6 — Fonctionnalités ──
   var fonctions=[];document.querySelectorAll('#s6 .ccard.selected .ccard-body strong').forEach(function(s){fonctions.push(s.textContent);});
-  if(fonctions.length)data.append('Fonctionnalités souhaitées',fonctions.join(' | '));
+  data.append('23 | Fonctionnalités souhaitées',fonctions.length?fonctions.join(' | '):'—');
   var ta6=document.querySelector('#s6 textarea');
-  if(ta6&&ta6.value)data.append('Outils existants',ta6.value);
+  data.append('24 | Outils existants',ta6&&ta6.value?ta6.value:'—');
 
-  // ÉTAPE 7
+  // ── ÉTAPE 7 — Budget & Délai ──
   var budgetS=document.querySelector('#s7 input[name="budget"]:checked');
-  if(budgetS)data.append('Budget',budgetS.closest('.rcard').querySelector('strong').textContent);
+  data.append('25 | Budget',budgetS?budgetS.closest('.rcard').querySelector('strong').textContent:'—');
   var delaiS=document.querySelector('#s7 input[name="delai"]:checked');
-  if(delaiS)data.append('Délai',delaiS.closest('.rcard').querySelector('strong').textContent);
+  data.append('26 | Délai',delaiS?delaiS.closest('.rcard').querySelector('strong').textContent:'—');
   var gestionS=document.querySelector('#s7 input[name="gestion"]:checked');
-  if(gestionS)data.append('Gestion après livraison',gestionS.closest('.rcard').querySelector('strong').textContent);
+  data.append('27 | Gestion après livraison',gestionS?gestionS.closest('.rcard').querySelector('strong').textContent:'—');
   var ta7=document.querySelectorAll('#s7 textarea');
-  if(ta7[0]&&ta7[0].value)data.append('Informations complémentaires',ta7[0].value);
+  data.append('28 | Informations complémentaires',ta7[0]&&ta7[0].value?ta7[0].value:'—');
   var connu=document.querySelector('#s7 select');
-  if(connu&&connu.value)data.append('Comment connu Digizyn',connu.value);
+  data.append('29 | Comment connu Digizyn',connu&&connu.value?connu.value:'—');
   fetch('https://formspree.io/f/xgopoyzn',{method:'POST',body:data,headers:{'Accept':'application/json'}})
   .then(function(r){
     if(r.ok){document.getElementById('s8').style.display='none';document.getElementById('success').style.display='block';window.scrollTo({top:0,behavior:'smooth'});}
