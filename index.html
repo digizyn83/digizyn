@@ -194,6 +194,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .stat-label{font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;display:block}
 .stat-sep{width:1px;background:rgba(255,255,255,0.15);align-self:stretch}
 
+/* ===================== OFFRE LANCEMENT ===================== */
+.launch-banner{background:linear-gradient(135deg,rgba(37,99,235,0.15),rgba(6,182,212,0.1));border-top:1px solid rgba(6,182,212,0.2);border-bottom:1px solid rgba(6,182,212,0.2);padding:1.2rem 3rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;text-align:center}
+.launch-tag{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.launch-text{font-size:14px;color:var(--white);font-weight:400}
+.launch-text strong{color:var(--cyan)}
+.launch-spots{font-size:13px;color:var(--gray)}
+@media(max-width:480px){.launch-banner{padding:1rem 1.2rem;gap:0.8rem}}
+
+/* ===================== GARANTIES ===================== */
+.guarantee-section{background:var(--black);padding:5rem 3rem;border-top:1px solid var(--border)}
+.guarantee-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:2.5rem auto 0}
+.g-card{padding:1.8rem;border:1px solid var(--border);border-radius:16px;background:rgba(255,255,255,0.02);text-align:center;transition:all .3s}
+.g-card:hover{border-color:rgba(6,182,212,0.3);transform:translateY(-4px)}
+.g-ico{font-size:32px;margin-bottom:1rem;display:block}
+.g-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:0.5rem}
+.g-desc{font-size:13px;color:var(--gray);line-height:1.6;font-weight:300}
+@media(max-width:1024px){.guarantee-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.guarantee-grid{grid-template-columns:1fr}.guarantee-section{padding:3.5rem 1.2rem}}
+
 /* ===================== IMAGE BAND ===================== */
 .img-band{display:grid;grid-template-columns:repeat(3,1fr);height:340px}
 .img-band-item{position:relative;overflow:hidden}
@@ -481,6 +500,14 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
   </div>
 </section>
 
+<!-- OFFRE DE LANCEMENT -->
+<div class="launch-banner">
+  <span class="launch-tag">🎯 Offre de lancement</span>
+  <span class="launch-text"><strong>3 sites offerts</strong> à nos premiers clients — en échange d'un témoignage honnête</span>
+  <span class="launch-spots">⚡ Plus que quelques places disponibles</span>
+  <a href="brief.html" class="nav-cta" style="font-size:12px;padding:8px 18px">J'en profite →</a>
+</div>
+
 <!-- BANDE 3 IMAGES -->
 <div class="img-band">
   <div class="img-band-item">
@@ -500,7 +527,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
 <!-- COMPTEURS -->
 <div class="counters">
   <div class="c-item rv"><span class="c-num">4<span class="c-suf"> j</span></span><span class="c-label">Délai de livraison moyen</span></div>
-  <div class="c-item rv rv1"><span class="c-num">100<span class="c-suf">%</span></span><span class="c-label">Clients satisfaits</span></div>
+  <div class="c-item rv rv1"><span class="c-num">100<span class="c-suf">%</span></span><span class="c-label">Sur mesure, jamais de template</span></div>
   <div class="c-item rv rv2"><span class="c-num">48<span class="c-suf">h</span></span><span class="c-label">Délai de réponse max</span></div>
   <div class="c-item rv rv3"><span class="c-num">∞</span><span class="c-label">Retouches incluses</span></div>
 </div>
@@ -647,7 +674,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
         <ul class="p-feats">
           <li>Jusqu'à 10 pages</li>
           <li>Blog / actualités</li>
-          <li>Prise de RDV en ligne</li>
+          <li>Formulaire de contact avancé</li>
           <li>SEO avancé + Analytics</li>
           <li>Livraison en 5 à 7 jours</li>
           <li>Support 1 mois inclus</li>
@@ -673,6 +700,39 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
       </div>
     </div>
     <p class="price-note rv">Tous les tarifs sont HT — Devis personnalisé gratuit pour tout projet spécifique</p>
+  </div>
+</section>
+
+<!-- GARANTIES -->
+<section class="guarantee-section">
+  <div class="s-inner">
+    <div style="text-align:center">
+      <div class="eyebrow rv">Nos engagements</div>
+      <h2 class="sec-h rv rv1">Pourquoi nous <em>faire confiance</em></h2>
+      <p class="sec-p rv rv2" style="margin:0 auto">Pas encore de témoignages ? Voici ce qu'on vous garantit, par écrit.</p>
+    </div>
+    <div class="guarantee-grid">
+      <div class="g-card rv">
+        <span class="g-ico">🔁</span>
+        <div class="g-title">Retouches illimitées</div>
+        <p class="g-desc">Vous n'aimez pas quelque chose ? On le change, autant de fois que nécessaire, jusqu'à ce que vous soyez 100% satisfait.</p>
+      </div>
+      <div class="g-card rv rv1">
+        <span class="g-ico">🚀</span>
+        <div class="g-title">Livraison garantie</div>
+        <p class="g-desc">On s'engage sur un délai précis dès le départ. Pas de mauvaises surprises, pas d'attente indéfinie.</p>
+      </div>
+      <div class="g-card rv rv2">
+        <span class="g-ico">💬</span>
+        <div class="g-title">Réponse en 48h max</div>
+        <p class="g-desc">Chaque message reçoit une réponse sous 48h ouvrées. Vous n'êtes jamais laissé sans nouvelles.</p>
+      </div>
+      <div class="g-card rv rv3">
+        <span class="g-ico">🔒</span>
+        <div class="g-title">Zéro appel obligatoire</div>
+        <p class="g-desc">Tout se passe par écrit — formulaire, email. Aucun appel forcé. Vous avancez à votre rythme.</p>
+      </div>
+    </div>
   </div>
 </section>
 
