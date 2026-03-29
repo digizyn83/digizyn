@@ -361,6 +361,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .cta-content h2 em{font-style:italic;color:var(--cyan)}
 .cta-content p{font-size:17px;color:rgba(255,255,255,0.75);margin-bottom:2.5rem;font-weight:300}
 
+/* ===================== TÉMOIGNAGES ===================== */
+.testi-section{background:var(--dark);padding:7rem 3rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:3.5rem}
+.testi-card{border:1px solid var(--border);border-radius:20px;padding:2rem;background:rgba(255,255,255,0.02);position:relative;transition:all .3s}
+.testi-card:hover{border-color:rgba(6,182,212,0.3);transform:translateY(-4px)}
+.testi-stars{color:#f59e0b;font-size:14px;margin-bottom:1rem;letter-spacing:2px}
+.testi-text{font-size:14px;color:var(--gray);line-height:1.8;margin-bottom:1.5rem;font-weight:300;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:600;color:var(--white)}
+.testi-role{font-size:12px;color:var(--gray);font-weight:300}
+@media(max-width:1024px){.testi-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.testi-section{padding:3.5rem 1.2rem}}
+
 /* ===================== AVIS ===================== */
 .avis-section{background:var(--dark);padding:5rem 3rem;text-align:center;border-top:1px solid var(--border)}
 .avis-stars{font-size:28px;margin-bottom:1rem;letter-spacing:4px}
@@ -385,6 +399,15 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
 .rv{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
 .rv.on{opacity:1;transform:translateY(0)}
 .rv1{transition-delay:.1s}.rv2{transition-delay:.2s}.rv3{transition-delay:.3s}
+
+/* WHATSAPP BUTTON */
+.wa-fab{position:fixed;bottom:2rem;left:2rem;z-index:400}
+.wa-btn{width:54px;height:54px;border-radius:50%;background:#25D366;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all .25s;text-decoration:none}
+.wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.6)}
+.wa-btn svg{width:28px;height:28px;fill:#fff}
+.wa-tooltip{position:absolute;bottom:64px;left:0;background:rgba(13,17,23,0.95);color:var(--white);font-size:12px;font-weight:500;font-family:var(--ff);padding:6px 12px;border-radius:8px;border:1px solid var(--border);white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+.wa-fab:hover .wa-tooltip{opacity:1}
+@media(max-width:480px){.wa-fab{bottom:1.5rem;left:1rem}}
 
 /* SHARE BUTTON */
 .share-fab{position:fixed;bottom:2rem;right:2rem;z-index:400;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
@@ -467,6 +490,7 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <li><a href="#processus" onclick="closeMenu()">Processus</a></li>
     <li><a href="#tarifs" onclick="closeMenu()">Tarifs</a></li>
     <li><a href="blog/" onclick="closeMenu()">Blog</a></li>
+    <li><a href="a-propos.html" onclick="closeMenu()">À propos</a></li>
     <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px">
@@ -822,6 +846,42 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
 </section>
 
 <!-- CTA avec photo plein écran -->
+<!-- TÉMOIGNAGES -->
+<section class="testi-section" id="temoignages">
+  <div class="s-inner">
+    <div style="text-align:center">
+      <div class="eyebrow rv">Témoignages</div>
+      <h2 class="sec-h rv rv1">Ce que disent<br><em>nos clients</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card rv">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Témoignage à venir — ce client a bénéficié d'un site offert dans le cadre de notre lancement."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">?</div>
+          <div><div class="testi-name">Prénom Nom</div><div class="testi-role">Activité — Ville</div></div>
+        </div>
+      </div>
+      <div class="testi-card rv rv1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Témoignage à venir — ce client a bénéficié d'un site offert dans le cadre de notre lancement."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">?</div>
+          <div><div class="testi-name">Prénom Nom</div><div class="testi-role">Activité — Ville</div></div>
+        </div>
+      </div>
+      <div class="testi-card rv rv2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Témoignage à venir — ce client a bénéficié d'un site offert dans le cadre de notre lancement."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">?</div>
+          <div><div class="testi-name">Prénom Nom</div><div class="testi-role">Activité — Ville</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- AVIS GOOGLE -->
 <div class="avis-section rv">
   <div class="avis-stars">⭐⭐⭐⭐⭐</div>
@@ -844,6 +904,14 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
     <a href="brief.html" class="btn-primary rv rv3">Démarrer maintenant →</a>
   </div>
 </section>
+
+<!-- WHATSAPP FAB -->
+<div class="wa-fab">
+  <span class="wa-tooltip">Nous écrire sur WhatsApp</span>
+  <a href="https://wa.me/33774312761" target="_blank" rel="noopener" class="wa-btn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.882l6.186-1.443A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 01-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374A9.867 9.867 0 012.106 12C2.106 6.58 6.58 2.106 12 2.106c5.42 0 9.894 4.474 9.894 9.894 0 5.42-4.474 9.894-9.894 9.894z"/></svg>
+  </a>
+</div>
 
 <!-- SHARE FAB -->
 <div class="share-fab">
