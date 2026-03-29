@@ -342,6 +342,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .cta-content h2 em{font-style:italic;color:var(--cyan)}
 .cta-content p{font-size:17px;color:rgba(255,255,255,0.75);margin-bottom:2.5rem;font-weight:300}
 
+/* ===================== AVIS ===================== */
+.avis-section{background:var(--dark);padding:5rem 3rem;text-align:center;border-top:1px solid var(--border)}
+.avis-stars{font-size:28px;margin-bottom:1rem;letter-spacing:4px}
+.avis-text{font-size:17px;color:var(--gray);margin-bottom:0.5rem;font-weight:300}
+.avis-text strong{color:var(--white)}
+.avis-sub{font-size:13px;color:var(--gray);margin-bottom:2rem;font-weight:300}
+.btn-avis{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff);font-size:15px;font-weight:600;padding:14px 32px;border-radius:8px;background:#fff;color:#1a1a2e;border:none;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(255,255,255,0.15)}
+.btn-avis:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,0.25)}
+.btn-avis svg{width:20px;height:20px}
+@media(max-width:480px){.avis-section{padding:3.5rem 1.2rem}}
+
 /* ===================== FOOTER ===================== */
 footer{background:#020308;border-top:1px solid var(--border);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .foot-logo{font-family:var(--ff);font-size:17px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--white)}
@@ -759,6 +770,17 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
 </section>
 
 <!-- CTA avec photo plein écran -->
+<!-- AVIS GOOGLE -->
+<div class="avis-section rv">
+  <div class="avis-stars">⭐⭐⭐⭐⭐</div>
+  <p class="avis-text"><strong>Vous avez travaillé avec Digizyn ?</strong></p>
+  <p class="avis-sub">Votre avis aide d'autres entrepreneurs à nous trouver sur Google — ça prend 30 secondes.</p>
+  <a href="https://g.page/r/CXWFRop_Ih2hEBM/review" target="_blank" rel="noopener" class="btn-avis">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="#4285F4"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="none"/></svg>
+    Laisser un avis Google
+  </a>
+</div>
+
 <section class="cta-section">
   <div class="cta-bg">
     <img loading="lazy" src="https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=1800&q=80&auto=format&fit=crop" alt="Clavier ordinateur">
