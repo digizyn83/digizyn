@@ -369,8 +369,20 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
 .copied-msg{position:fixed;bottom:6rem;right:2rem;background:#22c55e;color:#fff;font-size:13px;font-weight:600;padding:8px 18px;border-radius:20px;font-family:var(--ff);opacity:0;transition:opacity .3s;pointer-events:none;z-index:500}
 .copied-msg.show{opacity:1}
 
+/* BURGER MENU */
+.burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:8px;cursor:pointer;padding:8px}
+.burger span{display:block;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
 @media(max-width:1024px){
-  nav{padding:1rem 1.5rem}.nav-links{display:none}
+  nav{padding:1rem 1.5rem;position:relative}.nav-links{display:none}
+  .burger{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(6,8,15,0.98);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:1.5rem 2rem;gap:0;z-index:999}
+  .nav-links.open li{border-bottom:1px solid var(--border)}
+  .nav-links.open li:last-child{border-bottom:none}
+  .nav-links.open a{display:block;padding:1rem 0;font-size:15px;color:var(--white)}
   .hero-content{padding:7rem 1.5rem 4rem}
   .hero h1{font-size:clamp(36px,8vw,56px)}
   .img-band{grid-template-columns:1fr;height:auto}
@@ -417,14 +429,19 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
 
 <nav>
   <a href="#" class="logo">DIGI<span>ZYN</span></a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#processus">Processus</a></li>
-    <li><a href="#tarifs">Tarifs</a></li>
-    <li><a href="blog/">Blog</a></li>
-    <li><a href="#faq">FAQ</a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#processus" onclick="closeMenu()">Processus</a></li>
+    <li><a href="#tarifs" onclick="closeMenu()">Tarifs</a></li>
+    <li><a href="blog/" onclick="closeMenu()">Blog</a></li>
+    <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
   </ul>
-  <a href="brief.html" class="nav-cta">Démarrer un projet</a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="brief.html" class="nav-cta">Démarrer un projet</a>
+    <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO avec vraie photo plein écran -->
@@ -785,6 +802,18 @@ footer p{font-size:12px;color:rgba(255,255,255,0.2)}
 </footer>
 
 <script>
+// Burger menu
+function toggleMenu(){
+  var b=document.getElementById('burger');
+  var n=document.getElementById('nav-links');
+  b.classList.toggle('open');
+  n.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('nav-links').classList.remove('open');
+}
+
 // Cursor
 var cur=document.getElementById('cur'),ring=document.getElementById('ring');
 var mx=0,my=0,rx=0,ry=0;
