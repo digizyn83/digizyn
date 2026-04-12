@@ -2,8 +2,12 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6LM8TY7DT6"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-6LM8TY7DT6');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brief projet — Digizyn</title>
+<title>Brief projet — Digizyn | Démarrer votre site web</title>
+<meta name="description" content="Remplissez notre brief en 5 minutes pour recevoir un devis gratuit sous 24h. Site vitrine ou e-commerce sur mesure, livré en 2 à 7 jours.">
+<link rel="canonical" href="https://digizyn.fr/brief.html">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#f5f4f0">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--black:#0a0a0a;--white:#f5f4f0;--gray:#888;--font-h:'Syne',sans-serif;--font-b:'DM Sans',sans-serif}
+:root{--black:#0a0a0a;--white:#f5f4f0;--gray:#666;--font-h:'Syne',sans-serif;--font-b:'DM Sans',sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font-b);background:var(--white);color:var(--black);font-size:16px;line-height:1.6}
 nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;border-bottom:1px solid rgba(10,10,10,.08)}
@@ -125,15 +129,15 @@ input[type=checkbox],input[type=radio]{width:17px;height:17px;cursor:pointer;acc
   <div class="step active" id="s1">
     <div class="step-title">01 — Qui êtes-vous ?</div>
     <div class="grid2">
-      <div class="field"><label class="lbl">Prénom &amp; nom <span class="req">*</span></label><input type="text" id="nom" placeholder="Marie Dupont"></div>
-      <div class="field"><label class="lbl">Entreprise</label><input type="text" id="entreprise" placeholder="Mon Entreprise"></div>
+      <div class="field"><label class="lbl" for="nom">Prénom &amp; nom <span class="req">*</span></label><input type="text" id="nom" placeholder="Marie Dupont"></div>
+      <div class="field"><label class="lbl" for="entreprise">Entreprise</label><input type="text" id="entreprise" placeholder="Mon Entreprise"></div>
     </div>
     <div class="grid2">
-      <div class="field"><label class="lbl">Email <span class="req">*</span></label><input type="email" id="email" placeholder="marie@monentreprise.fr"></div>
-      <div class="field"><label class="lbl">Téléphone</label><input type="tel" id="tel" placeholder="+33 6 00 00 00 00"></div>
+      <div class="field"><label class="lbl" for="email">Email <span class="req">*</span></label><input type="email" id="email" placeholder="marie@monentreprise.fr"></div>
+      <div class="field"><label class="lbl" for="tel">Téléphone</label><input type="tel" id="tel" placeholder="+33 6 00 00 00 00"></div>
     </div>
     <div class="field">
-      <label class="lbl">Secteur d'activité <span class="req">*</span></label>
+      <label class="lbl" for="secteur">Secteur d'activité <span class="req">*</span></label>
       <select id="secteur">
         <option value="">Sélectionner...</option>
         <option>Commerce &amp; Retail</option><option>Restauration &amp; Alimentation</option>
@@ -146,7 +150,7 @@ input[type=checkbox],input[type=radio]{width:17px;height:17px;cursor:pointer;acc
       </select>
     </div>
     <div class="field">
-      <label class="lbl">Décrivez votre activité <span class="req">*</span></label>
+      <label class="lbl" for="activite">Décrivez votre activité <span class="req">*</span></label>
       <div class="hint">Qui êtes-vous ? Que proposez-vous ? À qui ?</div>
       <textarea id="activite" placeholder="Ex : Je suis coiffeuse indépendante à Lyon, spécialisée dans les colorations végétales..."></textarea>
     </div>
