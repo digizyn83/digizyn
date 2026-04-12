@@ -1,0 +1,31 @@
+# Ignorer tout par défaut
+*
+
+# Autoriser uniquement les fichiers du site Digizyn
+!index.html
+!brief.html
+!a-propos.html
+!cgv.html
+!confidentialite.html
+!mentions-legales.html
+!sitemap.xml
+!robots.txt
+!sw.js
+!manifest.json
+!CNAME
+!README.md
+!.gitignore
+
+# Dossiers du site
+!blog/
+!blog/**
+!images/
+!images/**
+
+# Ignorer les fichiers temporaires dans images
+images/*.backup*
+
+# Ignorer les fichiers de backup et demo
+index.html.backup*
+compare-colors.html
+demo-temoignages.html
