@@ -1,13 +1,20 @@
-var CACHE = 'digizyn-v1';
+var CACHE = 'digizyn-v2';
 var ASSETS = [
   '/',
   '/index.html',
   '/brief.html',
+  '/a-propos.html',
+  '/cgv.html',
+  '/confidentialite.html',
+  '/mentions-legales.html',
+  '/blog/',
+  '/blog/agence-web-ou-freelance.html',
+  '/blog/combien-coute-un-site-web.html',
+  '/blog/site-web-entrepreneur-francophone.html',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png',
-  'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,600;1,400;1,600&display=swap',
-  'https://fonts.googleapis.com/css2?family=Syne:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap'
+  'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,600;1,400;1,600&display=swap'
 ];
 
 self.addEventListener('install', function(e) {
